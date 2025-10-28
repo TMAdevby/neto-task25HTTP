@@ -40,7 +40,7 @@ public class Main {
 // отправка запроса
         CloseableHttpResponse response = httpClient.execute(request);
 // вывод полученных заголовков
-        Arrays.stream(response.getHeaders()).forEach(System.out::println);
+//        Arrays.stream(response.getHeaders()).forEach(System.out::println);
 // чтение тела ответа
 //        String body = new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8);
 //        System.out.println(body);
@@ -50,7 +50,10 @@ public class Main {
                 new TypeReference<List<Fact>>() {
                 }
         );
-        facts.forEach(System.out::println);
+//        facts.forEach(System.out::println);
+
+        facts.stream().filter(fact -> fact.getUpvotes() != null && fact.getUpvotes() > 0)
+                .forEach(System.out::println);
 
         response.close();
         httpClient.close();
