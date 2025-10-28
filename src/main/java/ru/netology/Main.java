@@ -16,12 +16,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
-    public static final String REMOTE_SERVICE_URI =
-            "https://raw.githubusercontent.com/netology-code/jd-homeworks/master/http/task1/cats";
+    public static final String REMOTE_SERVICE_URI = "https://raw.githubusercontent.com/netology-code/jd-homeworks/master/http/task1/cats";
     public static ObjectMapper mapper = new ObjectMapper();
 
     public static void main(String[] args) throws IOException {
@@ -43,20 +40,19 @@ public class Main {
 // отправка запроса
         CloseableHttpResponse response = httpClient.execute(request);
 // вывод полученных заголовков
-        Arrays.stream(response.getHeaders()).filter(value -> value.getUpvotes() != null && value.getUpvotes() > 0)
-                .forEach(System.out::println);
+        Arrays.stream(response.getHeaders()).forEach(System.out::println);
 // чтение тела ответа
 //        String body = new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8);
 //        System.out.println(body);
 
-//        List<Post> posts = mapper.readValue(
-//                response.getEntity().getContent(),
-//                new TypeReference<List<Post>>() {
-//                }
-//        );
-        posts.forEach(System.out::println);
+        List<Fact> facts = mapper.readValue(
+                response.getEntity().getContent(),
+                new TypeReference<List<Fact>>() {
+                }
+        );
+        facts.forEach(System.out::println);
 
         response.close();
-        httpClient.close()
+        httpClient.close();
     }
 }
