@@ -24,7 +24,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         ConnectionConfig connConfig = ConnectionConfig.custom()
                 .setConnectTimeout(5000, TimeUnit.SECONDS)
-                .setSocketTimeout(5000,TimeUnit.MILLISECONDS)
+                .setSocketTimeout(5000, TimeUnit.MILLISECONDS)
                 .build();
 
         BasicHttpClientConnectionManager cm = new BasicHttpClientConnectionManager();
