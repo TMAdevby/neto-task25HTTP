@@ -49,11 +49,11 @@ public class Main {
 //        String body = new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8);
 //        System.out.println(body);
 
-        List<Post> posts = mapper.readValue(
-                response.getEntity().getContent(),
-                new TypeReference<List<Post>>() {
-                }
-        );
+//        List<Post> posts = mapper.readValue(
+//                response.getEntity().getContent(),
+//                new TypeReference<List<Post>>() {
+//                }
+//        );
         posts.forEach(System.out::println);
 
         response.close();
