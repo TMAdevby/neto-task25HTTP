@@ -1,4 +1,4 @@
-package ru.netology;
+package ru.netology.first;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
